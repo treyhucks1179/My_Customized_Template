@@ -890,18 +890,38 @@ section {
     background-color: #111111
 }
 
-.test-bg-bg
+.bg1
 {
     background-color: #222
 }
-.test-bg
+.bg2 {
+    background-color: #ea1515;
+    margin-left: 2.1%;
+    margin-right: 2.1%;
+    height: 200px;
+}
+
+.bg3 {
+    background-color: #222;
+    margin-left: 2.1%;
+    margin-right: 2.1%;
+    text-transform: none;
+    font-size: 70px;
+    text-align: center;
+}
+
+.bg4
 {
     background-color: #ea1515;
-  
-    margin-left: 30px;
-    margin-right: 30px;
-    height: 200px;
+    height:40px ;
+    margin-left: 2.1%;
+    margin-right:2.1%;
+}
 
+.bg5 {
+    background-color: #ea1515;
+    margin-left: 2.1%;
+    margin-right: 2.1%;
 }
     .dark-wrapper.opaqued,
     .dark-opaqued {
