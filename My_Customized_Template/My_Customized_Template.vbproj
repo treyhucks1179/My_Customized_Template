@@ -92,6 +92,30 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fonts\font-awesome.min.css" />
+    <Content Include="Fonts\fontawesome-webfont.svg" />
+    <Content Include="Fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="Fonts\pe-icons.css" />
+    <Content Include="Images\agency-1.jpg" />
+    <Content Include="Images\bg1.jpg" />
+    <Content Include="Images\bg2.jpg" />
+    <Content Include="Images\bg3.jpg" />
+    <Content Include="Images\blog-2.jpg" />
+    <Content Include="Images\cc1.jpg" />
+    <Content Include="Images\corporate-1.jpg" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\footer-bg.jpeg" />
+    <Content Include="Images\landing-2.jpg" />
+    <Content Include="Images\loading.GIF" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo_reverse.png" />
+    <Content Include="Images\portfolio-1.jpg" />
+    <Content Include="Images\widget1.jpg" />
+    <Content Include="Images\widget2.jpg" />
+    <Content Include="Images\widget3.jpg" />
+    <Content Include="Images\widget4.jpg" />
+    <Content Include="Images\widget5.jpg" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +148,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fonts\fontawesome-webfont.eot" />
+    <Content Include="Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Fonts\fontawesome-webfont.woff" />
+    <Content Include="Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="Fonts\Pe-icon-7-stroke.woff" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
