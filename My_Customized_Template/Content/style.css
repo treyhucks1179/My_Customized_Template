@@ -374,6 +374,24 @@ body {
     font-size: 13px;
 }
 
+.btn-primary2 {
+    border-color: #333;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background-color: transparent;
+    padding: 15px 0px;
+    letter-spacing: 1px;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    border: none;
+    border-bottom: 3px solid;
+    font-size: 13px;
+}
     .btn-primary.btn-transparent {
         border-color: transparent !important
     }
@@ -446,6 +464,32 @@ body {
     background-color: transparent !important
 }
 
+.claps 
+{
+    background-color: #222;
+    background-image: url(/Images/hex_bg.png);
+    background-position:center;
+    color: #fff;
+    font-family: "Times New Roman", Times;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 70px;
+    height: 100%;
+}
+
+.active,.claps:hover 
+{
+    background-color: #fff;
+    color: #222;
+}
+
+.clapscontent {
+    background-color: #ea1515;
+    color: #fff;
+}
 
 /*-----------------------------------------------------------------------------------*/
 
@@ -945,7 +989,6 @@ section {
     color: #fff;
 }
 
-}
     .dark-wrapper.opaqued,
     .dark-opaqued {
         background-color: rgba(0, 0, 0, 0.7);

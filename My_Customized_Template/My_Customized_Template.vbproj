@@ -92,6 +92,10 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\plugins.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Fonts\font-awesome.min.css" />
     <Content Include="Fonts\fontawesome-webfont.svg" />
     <Content Include="Fonts\Pe-icon-7-stroke.svg" />
@@ -105,6 +109,7 @@
     <Content Include="Images\corporate-1.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\footer-bg.jpeg" />
+    <Content Include="Images\hex_bg.png" />
     <Content Include="Images\landing-2.jpg" />
     <Content Include="Images\loading.GIF" />
     <Content Include="Images\logo.png" />
@@ -116,6 +121,10 @@
     <Content Include="Images\widget4.jpg" />
     <Content Include="Images\widget5.jpg" />
     <Content Include="index.html" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\init.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\plugins.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -171,10 +180,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
