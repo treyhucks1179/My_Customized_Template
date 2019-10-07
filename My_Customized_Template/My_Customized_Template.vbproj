@@ -110,6 +110,7 @@
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\footer-bg.jpeg" />
     <Content Include="Images\hex_bg.png" />
+    <Content Include="Images\hex_bg_alt.png" />
     <Content Include="Images\landing-2.jpg" />
     <Content Include="Images\loading.GIF" />
     <Content Include="Images\logo.png" />
@@ -167,6 +168,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\Trey-Hucks-Portfolio - Web Deploy.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
