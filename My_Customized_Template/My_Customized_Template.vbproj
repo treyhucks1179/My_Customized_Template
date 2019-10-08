@@ -102,6 +102,14 @@
     <Content Include="Fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Fonts\pe-icons.css" />
     <Content Include="Images\agency-1.jpg" />
+    <Content Include="Images\ban.png" />
+    <Content Include="Images\ban2.png" />
+    <Content Include="Images\ban2_alt.png" />
+    <Content Include="Images\banner.png" />
+    <Content Include="Images\banner2.png" />
+    <Content Include="Images\banner_alt.png" />
+    <Content Include="Images\banner_alt2.png" />
+    <Content Include="Images\ban_alt.png" />
     <Content Include="Images\bg1.jpg" />
     <Content Include="Images\bg2.jpg" />
     <Content Include="Images\bg3.jpg" />
