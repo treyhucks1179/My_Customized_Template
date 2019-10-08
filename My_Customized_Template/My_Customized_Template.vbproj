@@ -92,6 +92,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Coding_Challenges\Basic_Math" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\plugins.css" />

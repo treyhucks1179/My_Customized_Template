@@ -373,25 +373,6 @@ body {
     border-bottom: 3px solid;
     font-size: 13px;
 }
-
-.btn-primary2 {
-    border-color: #333;
-    border-radius: 0;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #fff;
-    background-color: transparent;
-    padding: 15px 0px;
-    letter-spacing: 1px;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    border: none;
-    border-bottom: 3px solid;
-    font-size: 13px;
-}
     .btn-primary.btn-transparent {
         border-color: transparent !important
     }
@@ -1424,6 +1405,12 @@ textarea#comments {
 .hover-item-caption a,
 .overlay-item-caption a {
     font-family:"Times New Roman", Times;
+    color: #fff;
+}
+
+.hover-item-caption button,
+.overlay-item-caption button {
+    font-family: "Times New Roman", Times;
     color: #fff;
 }
 
