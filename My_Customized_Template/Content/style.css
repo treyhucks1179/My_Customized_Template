@@ -51,6 +51,7 @@
 /*  2 - BASE
 /*-----------------------------------------------------------------------------------*/
 
+
 body {
     overflow-x: hidden;
     font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1392,6 +1393,8 @@ textarea#comments {
 }
 
 
+
+
 .hover-item:hover img {
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
@@ -1458,6 +1461,8 @@ textarea#comments {
 .overlay-item-caption button {
     font-family: "Times New Roman", Times;
     color: #fff;
+    margin: 0 15px;
+    z-index: 10;
 }
 
 .vertical-align-bottom {

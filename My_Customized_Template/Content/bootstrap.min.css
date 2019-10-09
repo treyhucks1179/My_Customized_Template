@@ -5784,7 +5784,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 1000000 !important;
     display: none;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
@@ -5797,13 +5797,15 @@ button.close {
         transition: transform .3s ease-out;
         -webkit-transform: translate3d(0,-25%,0);
         -o-transform: translate3d(0,-25%,0);
-        transform: translate3d(0,-25%,0)
+        transform: translate3d(0,-25%,0);
+        z-index: 1000000 !important;
     }
 
     .modal.in .modal-dialog {
         -webkit-transform: translate3d(0,0,0);
         -o-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0)
+        transform: translate3d(0,0,0);
+        z-index:1000000 !important;
     }
 
 .modal-open .modal {
@@ -5814,12 +5816,13 @@ button.close {
 .modal-dialog {
     position: relative;
     width: auto;
-    margin: 10px
+    margin: 10px;
+    z-index:1000000 !important;
 }
 
 .modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: #222;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #999;
@@ -5862,7 +5865,9 @@ button.close {
 
 .modal-title {
     margin: 0;
-    line-height: 1.42857143
+    line-height: 1.42857143;
+    color:#ea1515;
+    font-family:'Times New Roman';
 }
 
 .modal-body {
@@ -5900,7 +5905,8 @@ button.close {
 @media (min-width:768px) {
     .modal-dialog {
         width: 600px;
-        margin: 30px auto
+        margin: 30px auto;
+        z-index:1000000 !important;
     }
 
     .modal-content {
