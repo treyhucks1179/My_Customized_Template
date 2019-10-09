@@ -1787,10 +1787,9 @@ footer.white-wrapper {
     padding: 30px 30px;
     font-size: 20px;
     line-height: 1.42857143;
-    color: #ea1515;
-    background-color: #222;
+    color: #000;
+    background-color: #fff;
     background-image: none;
-    border:medium solid #ea1515;
     -webkit-box-shadow: none;
     box-shadow: none;
     font-family: 'Times New Roman';
