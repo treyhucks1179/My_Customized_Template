@@ -128,6 +128,8 @@
                 </div>
             </div>
         </header>
+
+        <!--PROJECTS SECTION-->
         <div>
             <button class="collapsible"><div class="clapsHeader">Projects</div></button>
             <div class="content">
@@ -195,6 +197,8 @@
                     </div>
                 </div>
             </div>
+
+            <!--CODING CHALLENGES SECTION-->
             <button class="collapsible"><div class="clapsHeader">Coding Challenges</div></button>
             <div class="content">
                 <div class="container">
@@ -207,12 +211,13 @@
                                     <div class="hover-item-caption smoothie">
                                         <div class="vertical-center smoothie">
                                             <h3 class="smoothie mb30">Basic Math</h3>
-                                            <button class="smoothie btn btn-primary" data-toggle="modal" data-target="#codeChallenge1">View</button>
+                                            <button class="smoothie btn btn-primary" data-toggle="modal" data-target="#Basic_Math">View</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-3">
                             <div class="ccbg">
                                 <div class="hover-item">
@@ -220,13 +225,14 @@
                                     <div class="overlay-item-caption smoothie"></div>
                                     <div class="hover-item-caption smoothie">
                                         <div class="vertical-center smoothie">
-                                            <h3 class="smoothie mb30">Coding Challenge 2</h3>
-                                            <button class="smoothie btn btn-primary" data-toggle="modal" data-target="#codeChallenge2">View</button>
+                                            <h3 class="smoothie mb30">Factorial</h3>
+                                            <button class="smoothie btn btn-primary" data-toggle="modal" data-target="#Factiorial-Modal">View</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-3">
                             <div class="ccbg">
                                 <div class="hover-item">
@@ -288,8 +294,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="col-lg-3">
                             <div class="ccbg">
                                 <div class="hover-item">
@@ -304,8 +308,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="col-lg-3">
                             <div class="ccbg">
                                 <div class="hover-item">
@@ -323,34 +325,40 @@
                     </div>
                 </div>
             </div>
+
+            <!--ABOUT ME SECTION-->
             <button class="collapsible"><div class="clapsHeader">About Me</div></button>
             <div class="content">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
+
+            <!--RESUME SECTION-->
             <button class="collapsible"><div class="clapsHeader">Resume</div></button>
             <div class="content">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
+            <!--CONTACT ME SECTION-->
             <button class="collapsible"><div class="clapsHeader">Contact Me</div></button>
             <div class="content">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
 
+        <!--FOOTER WRAPPER-->
         <div id="footer-wrapper" class="footer-image-bg">
             <section class="transparent-wrapper">
                 <div class="section-inner">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                
+
                             </div>
                             <div class="col-md-4">
-                                
+
                             </div>
                             <div class="col-md-4">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -447,6 +455,7 @@
     </div>
 
     <!-- Modals Section -->
+    <!--PROJECTS MODALS-->
     <div class="modal fade" id="project1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -515,7 +524,9 @@
         </div>
     </div>
 
-    <div class="modal fade" id="codeChallenge1">
+
+    <!--CODING CHALLENGES MODALS-->
+    <div class="modal fade" id="Basic_Math">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -525,37 +536,67 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="1_num1"><span style="color:#fff; font-family: 'Times New Roman';">Number 1</span></label>
-                                    <input type="text" class="form-control" id="1_num1">
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="bmNum0">
+                                    <br />
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="bmNum1">
+                                    <br />
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="bmNum2">
+                                    <br />
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="bmNum3">
+                                    <br />
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="bmNum4">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-
+                            <div class="col-lg-9">
+                                <p id="bmMessage"></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="row">
+
+                        <button type="button" onclick="mathCalc()" class="btn btn-primary" id="bmSubmit">Submit</button>
+                        <button type="button" onclick="" class="btn btn-primary" id="bmShowCode">Show Code</button>
+                        <button type="button" onclick="" class="btn btn-primary" id="bmClear">Clear</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="codeChallenge2">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="Factiorial-Modal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal"><span style='color:#ea1515;'>&#215;</span></button>
+                    <h4 class="modal-title">Factiorial</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This is a large modal.</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Enter a Number" id="factNum">
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <p id="factMessage"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="row">
+
+                        <button type="button" onclick="factorial()" class="btn btn-primary" id="factSubmit">Submit</button>
+                        <button type="button" onclick="" class="btn btn-primary" id="factshowCode">Show Code</button>
+                        <button type="button" onclick="" class="btn btn-primary" id="factClear">Clear</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -670,6 +711,7 @@
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="Scripts/init.js"></script>
     <script src="Coding_Challenges/Basic_Math.js"></script>
+    <script src="Coding_Challenges/Factorial.js"></script>
 
 
     <script>
@@ -687,7 +729,7 @@
                 }
             });
         }
-    
+
     </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

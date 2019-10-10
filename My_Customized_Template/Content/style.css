@@ -1784,25 +1784,25 @@ footer.white-wrapper {
     display: block;
     width: 100%;
     height: 20px;
-    padding: 30px 30px;
+    padding: 20px 20px;
     font-size: 20px;
     line-height: 1.42857143;
-    color: #000;
-    background-color: #fff;
+    border:medium groove #ea1515;
+    color: #fff;
+    background-color: #222;
     background-image: none;
     -webkit-box-shadow: none;
     box-shadow: none;
     font-family: 'Times New Roman';
-
-    border-radius: 0px;
+    border-radius:0px;
 }
 
     .form-control:focus,
     .form-control.col-md-4:focus {
-        border: none;
-        border-bottom: 3px solid #222;
+        border: thick groove #fff;
         -webkit-box-shadow: none;
-        box-shadow: none
+        box-shadow: none;
+        border-radius:0px;
     }
 
 .dark-wrapper .form-control {
