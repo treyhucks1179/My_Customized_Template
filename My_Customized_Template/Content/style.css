@@ -1853,27 +1853,27 @@ footer.white-wrapper {
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #444;
+    color: #777;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: #444;
+    color: #777;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: #444;
+    color: #777;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .form-control:-ms-input-placeholder {
-    color: #444;
+    color: #777;
     font-weight: 700;
     text-transform: uppercase;
 }
