@@ -443,6 +443,59 @@ function palHelper(str) {
 //////////////////////////// CLEARING FUNCTIONS //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+// Reads in Input and calls necessary functions to read 
+function trieDriver() {
+
+    var root = trieInitialize();
+
+}
+
+//Initializes the Trie by creating and returning a new node with the value root and an array to hold it's children
+function trieInitialize() {
+
+    var node  = {
+
+        value: "root",
+
+        children: new Array(),
+
+    }
+
+    return node;
+}
+
+//Will Add a new child to the 
+function addChild(node) {
+
+
+
+}
+
+function hasSpecificChild(node) {
+
+
+
+}
+
+function childless(node) {
+
+
+
+}
+
+function trieIterator() {
+
+
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////// CLEARING FUNCTIONS //////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function clearlyUno(message, form) {
 
     $('#bmMessage').empty();
