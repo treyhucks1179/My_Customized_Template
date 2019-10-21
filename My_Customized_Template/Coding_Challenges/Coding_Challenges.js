@@ -359,7 +359,7 @@ function messageBuilder(validator, fizzub, fizzubSpan) {
     //Input is empty
     if (validator == -3) {
 
-        return normSpan + "You did not enter a " + spanEnd + fizzubSpan + fizzub + spanEnd + brk + fizzubSpan + fizzub + spanEnd + normSpan + "  must be an" + spanEnd + redSpan + "  Integer  " + spanEnd + whiteSpan + "between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "100";
+        return normSpan + "You did not enter  " + spanEnd + fizzubSpan + fizzub + spanEnd + brk + fizzubSpan + fizzub + spanEnd + normSpan + "  must be an" + spanEnd + redSpan + "  Integer  " + spanEnd + whiteSpan + "between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "100";
     }
     //Input is not an Integer between 1 and 100
     else if (validator == 0 || validator == -1 || validator == -2) {
