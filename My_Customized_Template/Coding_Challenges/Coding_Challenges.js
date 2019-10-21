@@ -115,10 +115,8 @@ function factorial() {
     var whiteSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 25px;'>";
     var redSpan = "<span style='color: #ea1515; font-family:Times New Roman; font-size: 35px;'>";
     var spanEnd = "</span>";
-    var brk = "<br /><br />";
     var value;
     var factorial;
-    var counter;
 
 
     //Clear previous Message
@@ -192,96 +190,64 @@ function factorial() {
 //////////////////////////// FIZZBUZZ Function //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//Main Driver for FIZZBUZZ, it will create necessary variables and call helper functions
 function fizzBuzzDriver() {
 
-    var whiteSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 25px;'>";
-    var redSpan = "<span style='color: #ea1515; font-family:Times New Roman; font-size: 25px;'>";
-    var spanEnd = "</span>";
-    var brk = "<br /><br />";
-
-    var normSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 20px;'>";
+    //Special span tags for coloring the fizz and buzz text separately and for including breaks
     var fizzSpan = "<span style = 'color: #0094ff; font-family:Times New Roman; font-size: 25px;'>";
     var buzzSpan = "<span style = 'color: #ffd800; font-family:Times New Roman; font-size: 25px;'>";
+    var brk = "<br /><br />";
 
+    //Fizzle and Buzzle store the string input
     var fizzle = $('#fbForm0').val();
     var buzzle = $('#fbForm1').val();
 
-
+    //Fizzer and Buzzer will store the integer value of the input it it is valid
     var fizzer;
     var buzzer;
 
+    //Validators will store the results of the input validation function
+    var fizzValidator;
+    var buzzValidator;
+
+    //Messages will store the constructed messages to push to the modal in case of invalid input
+    var fizzMessage;
+    var buzzMessage;
+
+    //Clear Modal Body on Submit
     $('#fbMessage').empty();
 
-    //If statements to cover variety of inputs
-    if (fizzle !== "" && buzzle !== "") {
 
-        if ($.isNumeric(fizzle) && $.isNumeric(buzzle)) {
+    //Validate Input
 
-            fizzer = Number(fizzle);
-            buzzer = Number(buzzle);
+    fizzValidator = inputValidator(fizzle);
+    buzzValidator = inputValidator(buzzle);
 
-            if (Number.isInteger(fizzer) && Number.isInteger(buzzer)) {
+    if (buzzValidator == 1 && fizzValidator == 1) {
 
-                if ((fizzer > 0 && fizzer <= 100) && (buzzer > 0 && buzzer <= 100)) {
+        fizzer = Number(fizzle);
+        buzzer = Number(buzzle);
 
-                    fizzBizzSolver(fizzer, buzzer);
-
-                }
-                else if ((fizzer < 0 || fizzer > 100) && (buzzer > 0 && buzzer <= 100)) {
-
-                    $('#fbMessage').append(fizzSpan + "FIZZ  " + spanEnd + normSpan + "must be a number between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "  100");
-                }
-                else if ((fizzer > 0 && fizzer <= 100) && (buzzer < 0 || buzzer > 100)) {
-
-                    $('#fbMessage').append(buzzSpan + "BUZZ  " + spanEnd + normSpan + "must be a number between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "  100");
-                }
-                else {
-                    $('#fbMessage').append(fizzSpan + "FIZZ  " + spanEnd + normSpan + "and" + spanEnd + buzzSpan + "  BUZZ  " + spanEnd + normSpan + "must be numbers between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "  100");
-                }
-            }
-            else if (!Number.isInteger(fizzer) && Number.isInteger(buzzer)) {
-
-                $('#fbMessage').append(fizzSpan + "FIZZ  " + spanEnd + normSpan + "must be an  " + spanEnd + redSpan + "Integer" + spanEnd);
-            }
-            else if (Number.isInteger(fizzer) && !Number.isInteger(buzzer)) {
-
-                $('#fbMessage').append(buzzSpan + "Buzz  " + spanEnd + normSpan + "must be an  " + spanEnd + redSpan + "Integer" + spanEnd);
-            }
-            else {
-
-                $('#fbMessage').append(fizzSpan + "  FIZZ" + spanEnd + normSpan + "  and" + spanEnd + buzzSpan + "  BUZZ  " + spanEnd + normSpan + "must be  " + spanEnd + redSpan+" Integers" + spanEnd);
-            }
-        }
-        else if (!$.isNumeric(fizzle) && $.isNumeric(buzzle)) {
-
-            $('#fbMessage').append(fizzSpan + "FIZZ  " + spanEnd + normSpan + "must be a number" + spanEnd);
-        }
-        else if ($.isNumeric(fizzle) && !$.isNumeric(buzzle)) {
-
-            $('#fbMessage').append(buzzSpan + "BUZZ  " + spanEnd + normSpan + "must be a number" + spanEnd);
-        }
-        else {
-
-            $('#fbMessage').append(fizzSpan + "  FIZZ" + spanEnd + normSpan + "  and" + spanEnd + buzzSpan + "  BUZZ  " + spanEnd + normSpan + "must be numbers" + spanEnd);
-        }
-    }
-    else if ( fizzle == "" && buzzle !== "") {
-
-        $('#fbMessage').append(normSpan + "You did not enter a" + spanEnd + fizzSpan + "  FIZZ" + spanEnd);
-    }
-    else if ( buzzle == "" && fizzle !== "") {
-
-        $('#fbMessage').append(normSpan + "You did not enter a" + spanEnd + buzzSpan + "  BUZZ" + spanEnd);
+        fizzBuzzSolver(fizzer, buzzer);
     }
     else {
 
-        $('#fbMessage').append(normSpan + "You did not enter a" + spanEnd + fizzSpan + "  FIZZ" + spanEnd + normSpan + "  nor a" + spanEnd + buzzSpan + "  BUZZ" + spanEnd);
+        fizzMessage = messageBuilder(fizzValidator, "FIZZ", fizzSpan);
+        buzzMessage = messageBuilder(buzzValidator, "BUZZ", buzzSpan);
+
+        $('#fbMessage').append(fizzMessage + brk + buzzMessage);
+
     }
 }
 
-function fizzBizzSolver(fizzer, buzzer) {
+//This function will produce an array containing numbers 1 to 100 where multiples of fizz buzz are replaced with stylized words
+function fizzBuzzSolver(fizzer, buzzer) {
 
+    //Initialize array
     fizzBuzzArray = new Array();
+
+    //Create Span Tags that will format the strings
     var spanEnd = "</span>";
     var brk = "<br /><br />";
     var normSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 20px;'>";
@@ -289,43 +255,31 @@ function fizzBizzSolver(fizzer, buzzer) {
     var buzzSpan = "<span style = 'color: #ffd800; font-family:Times New Roman; font-size: 25px;'>BUZZ</span>";
     var comma = normSpan + ", " + spanEnd;
 
-    if (fizz(fizzer, i) && buzz(buzzer, i)) {
+    //This For Loop will push to each array element a string with formatting span tags
+    for (i = 1; i <= 100; i++) {
 
-        fizzBuzzArray.push(fizzSpan + buzzSpan + comm);
-    }
-    else if (fizz(fizzer, 1)) {
-
-        fizzBuzzArray.push(fizzSpan + comma);
-    }
-    else if (buzz(buzzer, 1)) {
-
-        fizzBuzzArray.push(buzzSpan + comma);
-    }
-    else {
-
-        fizzBuzzArray.push(normSpan + 1 + spanEnd + comma);
-    }
-
-    for (i = 2; i < 101; i++) {
-        
-
-        if (fizz(fizzer, i) && buzz(buzzer, i)) {
+        // number i is a multiple of both fizz and buzz
+        if (modulo(fizzer, i) && modulo(buzzer, i)) {
 
             fizzBuzzArray.push(fizzSpan + buzzSpan);
         }
-        else if (fizz(fizzer, i)) {
+        // i is a multiple of only fizz
+        else if (modulo(fizzer, i)) {
 
             fizzBuzzArray.push(fizzSpan);
         }
-        else if (buzz(buzzer, i)) {
+        // i is a multiple of onlu buzz
+        else if (modulo(buzzer, i)) {
 
             fizzBuzzArray.push(buzzSpan);
         }
+        // i is not a multiple of either
         else {
             fizzBuzzArray.push(normSpan + i + spanEnd);
         }
 
-        if (i % 10 == 0) {
+        //This will ensure correct formatting, Line Break on the tenth element or a comma.
+        if (modulo(10, i)) {
             fizzBuzzArray.push(brk);
         }
         else{
@@ -333,15 +287,135 @@ function fizzBizzSolver(fizzer, buzzer) {
         }
     }
 
+    //This for loop will append the formatted elements from the array to the message box of the modal.
     for (i = 0; i < fizzBuzzArray.length; i++) {
 
         $('#fbMessage').append(fizzBuzzArray[i]);
     }
 }
 
-function fizz( fizzer, num) {
 
-    if (num % fizzer == 0)
+// This Function will check if the input is an integer between 1 and 100
+// A valid input returns 1
+// An invalid input will return a number < 1 depending on how it is invalid
+function inputValidator(input) {
+
+    //Return values for the input based on various validatin rules
+    var returnEmpty = -3;
+    var returnNotNumber = -2;
+    var returnNotInteger = -1;
+    var returnNotRange = 0;
+    var returnValid = 1;
+
+    // Is there any input
+    if (inputNotEmpty(input))
+    {
+        //Is the input a Number
+        if (inputIsNumber(input))
+        {
+            var numInput = Number(input);
+            //Is the Input an Integer
+            if (inputIsInteger(numInput))
+            {
+                //Is the Input between 1 and 100
+                if (inputInRange(numInput))
+                {
+                    return returnValid;
+                }
+                else
+                {
+                    return returnNotRange;
+                }
+            }
+            else
+            {
+                return returnNotInteger;
+            }
+        }
+        else
+        {
+            return returnNotNumber;
+        }
+    }
+    else
+    {
+        return returnEmpty;
+    }
+}
+
+//This Function will create a message based off of the validator
+//Fizzub is whether the distinguisher between the message being built for fizz or buzz
+//FizzubSpan is the specific span tag for either fizz or buzz
+function messageBuilder(validator, fizzub, fizzubSpan) {
+
+    //Span tags for editing text color and size fo the message
+    var whiteSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 25px;'>";
+    var redSpan = "<span style='color: #ea1515; font-family:Times New Roman; font-size: 25px;'>";
+    var spanEnd = "</span>";
+    var brk = "<br />";
+    var normSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 20px;'>";
+    
+
+    //Input is empty
+    if (validator == -3) {
+
+        return normSpan + "You did not enter a " + spanEnd + fizzubSpan + fizzub + spanEnd + brk + fizzubSpan + fizzub + spanEnd + normSpan + "  must be an" + spanEnd + redSpan + "  Integer  " + spanEnd + whiteSpan + "between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "100";
+    }
+    //Input is not an Integer between 1 and 100
+    else if (validator == 0 || validator == -1 || validator == -2) {
+
+        return fizzubSpan + fizzub + spanEnd + normSpan + "  must be an" + spanEnd + redSpan + "  Integer  "+ spanEnd + whiteSpan + "between  " + spanEnd + redSpan + "1" + spanEnd + normSpan + "  and  " + spanEnd + redSpan + "100";
+    }
+    //Input is good
+    else if (validator == 1) {
+
+        return fizzubSpan + fizzub + spanEnd + normSpan + "  is a  " + spanEnd + redSpan + "valid  " + spanEnd + normSpan + " input" + spanEnd;
+    }
+}
+
+//Returns true if the input is not empty
+//Returns False if input is empty
+function inputNotEmpty(input) {
+
+    if (input == "") {
+
+        return false;
+    }
+    else {
+
+        return true;
+    }
+}
+
+//Returns true if the input could be interpolated as a number
+function inputIsNumber(input) {
+
+    return $.isNumeric(input);
+}
+
+//Returns true if the input could be interpreted as an integer
+function inputIsInteger(input){
+
+    return Number.isInteger(input);
+}
+
+//Returns True if the number is within the ranges of 1 to 100
+function inputInRange(input) {
+
+    if (input <= 100 && input >= 1) {
+
+        return true;
+    }
+    else {
+
+        return false;
+    }
+}
+
+//Performs the Modulo check to mark which numbers will be marked Fizz, Buzz, or FizzBuzz
+function modulo(fizzub, num) {
+
+    if (num % fizzub == 0)
     {
         return true;
     }
@@ -351,17 +425,7 @@ function fizz( fizzer, num) {
     }
 }
 
-function buzz(buzzer, num) {
 
-    if (num % buzzer == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// PALINDROME //////////////////////////////////////////////////////
@@ -440,7 +504,7 @@ function palHelper(str) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// CLEARING FUNCTIONS //////////////////////////////////////////////////////
+//////////////////////////// TRIE FUNCTIONALITY //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
