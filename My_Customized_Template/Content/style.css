@@ -478,7 +478,7 @@ body {
 
 .collapsible {
     width: 100%;
-    height: 325px;
+    height: 250px;
     background-color: #222;
     background-image: url(/Images/ban2.png);
     background-repeat: no-repeat;
@@ -495,8 +495,7 @@ body {
 
 .clapsHeader {
     /*position: absolute;*/
-
-    padding-top:100px;
+    padding-top: 25px;
     font-family: 'Times New Roman';
     font-size: 150px;
 }
