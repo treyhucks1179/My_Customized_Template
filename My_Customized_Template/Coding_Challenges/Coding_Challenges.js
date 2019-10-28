@@ -513,6 +513,8 @@ function trieDriver() {
 
     var root = trieInitialize();
 
+    var formattedInput = inputFormatter($('#trieTextBox').val());
+
 }
 
 //Initializes the Trie by creating and returning a new node with the value root and an array to hold it's children
@@ -554,7 +556,10 @@ function trieIterator() {
 
 }
 
+function inputFormatter() {
 
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CLEARING FUNCTIONS //////////////////////////////////////////////////////
