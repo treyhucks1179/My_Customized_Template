@@ -1,7 +1,9 @@
 ﻿
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// BASIC MATH FUNCTION /////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                BASIC MATH FUNCTIONALITY
+//*****************************************************************************************************
+//*****************************************************************************************************
 
 function mathCalc() {
 
@@ -105,9 +107,11 @@ function mathCalc() {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// FACTORIAL FUNCTION //////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                FACTORIAL
+//*****************************************************************************************************
+//*****************************************************************************************************
 
 function factorial() {
 
@@ -186,9 +190,11 @@ function factorial() {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// FIZZBUZZ Function //////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                FIZZBUZZ
+//*****************************************************************************************************
+//*****************************************************************************************************
 
 
 //Main Driver for FIZZBUZZ, it will create necessary variables and call helper functions
@@ -427,9 +433,11 @@ function modulo(fizzub, num) {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////// PALINDROME //////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                PALINDROME
+//*****************************************************************************************************
+//*****************************************************************************************************
 
 
 function palindrome() {
@@ -503,67 +511,301 @@ function palHelper(str) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// TRIE FUNCTIONALITY //////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                TRIE STRUCTURE
+//*****************************************************************************************************
+//*****************************************************************************************************
 
+/* ////////////////////////////////////////////////////
+ * THIS SECTION CONTAINS THE OBJECT CREATION FUNCTIONS
+ * ///////////////////////////////////////////////////
+ *
+ * rootNode will have a special, distinguishing value, a child array, and keep the total count of unique words in the trie
+ *
+ * 
+ *
+ */
+
+function rootNode() {
+
+    this.totalWordCount = 0;
+
+    this.value = "root";
+
+    this.children = new Array();
+
+}
+
+function node(value) {
+
+    this.count = 0;
+
+    this.value = value;
+
+    this.parent = parent;
+
+    this.children = new Array();
+}
+
+/* PRIMARY FUNCTIONALITY DRIVER, trieDriver STARTS AND ENDS THE PROGRAM
+ * 
+ * 
+ * 
+ */
 
 // Reads in Input and calls necessary functions to read 
 function trieDriver() {
 
-    var root = trieInitialize();
+    var mostCommonWord;
+    var longestWord;
+    var lastWord;
 
-    var formattedInput = inputFormatter($('#trieTextBox').val());
+
+    var root = new rootNode();
+
+    var wordArray = prepDriver($('#trieTextBox').val());
+
+    createTrie(wordArray, root);
+
+    alert(root.children[0].value);
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////
+ * THIS SECTION CONTAINS FUNCTIONS FOR ACCESSING INFORMATION ABOUT NODES
+ * ///////////////////////////////////////////////////////////////////////////////////
+ *
+ * nth Word will return the word at the place the user inputs
+ * The nth word search is a depth first search from the left-most branch
+ *
+ * hasWord returns true or false if the word exists in the trie, not a prefix but a word with a >=1 count
+ *
+ */
+
+function hasChild(childVal, node) {
+
+    for (k = 0; k < node.children.length; k++) {
+
+        if (childVal == node.children[k].value) {
+
+            return true;
+        }
+    }
+    return false;
+}
+
+function hasChildren(node) {
+
+    if (node.children.length >= 1) {
+
+        return true;
+    }
+    else {
+
+        return false;
+    }
+}
+
+function getParent(node) {
+
+    return node.parent;
+}
+
+function getChild(childVal, parent) {
+
+    for (m = 0; m < parent.children.length; m++) {
+
+        if (childVal == parent.children[m].value) {
+
+            return parent.children[m];
+        }
+    }
+}
+
+function getChildIndex(childVal, parent) {
+
+    for (p = 0; p < parent.children.length; p++) {
+
+        if (childVal == parent.children[p].value) {
+
+            return p;
+        }
+    }
+}
+
+function whichChildAmI(node) {
+
+    var index
+
 
 }
 
-//Initializes the Trie by creating and returning a new node with the value root and an array to hold it's children
-function trieInitialize() {
+/* ////////////////////////////////////////////////////////////////////////////////////
+ * THIS SECTION CONTAINS FUNCTIONS FOR MOVING THROUGH THE TRIE
+ * ///////////////////////////////////////////////////////////////////////////////////
+ *
+ * nth Word will return the word at the place the user inputs
+ * The nth word search is a depth first search from the left-most branch
+ * 
+ * hasWord returns true or false if the word exists in the trie, not a prefix but a word with a >=1 count
+ *
+ */
+function nthWord(place, root) {
 
-    var node  = {
+    currentNode = root;
 
-        value: "root",
 
-        children: new Array(),
+}
 
+function hasWord(word, root) {
+
+    //begin from the root 
+    currentNode = root;
+
+    //loop from the root through the word, if it exists then the loop wil finish
+    for (o = 0; o < word.length; o++) {
+
+        if (hasChild(word.charAt(o), currentNode)) {
+
+            currentNode = getChild(word.charAt(o), currentNode);
+        }
+        else {
+            return false;
+        }
     }
 
-    return node;
+    //this final check ensures that the word actually occurred in the text and is not just a prefix for another wortd (Ban and Banned are words but Banne and Bann are not)
+    if (currentNode.count > 0) {
+
+        return true;
+    }
+    else {
+
+        return false;
+    }
 }
 
-//Will Add a new child to the 
-function addChild(node) {
+/* ////////////////////////////////////////////////////////////////////////////////////
+ * THIS SECTION IS CONCERNED WITH ADDING WORDS AND MAKING THE TRIE
+ * ///////////////////////////////////////////////////////////////////////////////////
+ * 
+ * createTrie will iterate through the word array and call addWord to link them to the root
+ * 
+ * addWorrd will verify attempt to add the word at root and if a prefix exists it will not duplicate
+ * 
+ * addChild create
+ * 
+ */
 
+function createTrie(wordArray, root) {
 
+    for (i = 0; i < wordArray.length; i++) {
 
+        addWord(wordArray[i], root);
+    }
 }
 
-function hasSpecificChild(node) {
+function addWord(word, root) {
 
+    var currentNode = root;
 
+    for (j = 0; j < word.length; j++) {
 
+        if (currentNode.children.length > 0 && hasChild(word.charAt(j), currentNode)) {
+
+            currentNode = getChild(word.charAt(j), currentNode);
+        }
+        else {
+
+            currentNode = addChild(word.charAt(j), currentNode);
+        }
+    }
+
+    if (currentNode.count == 0) {
+
+        root.totalWordCount++;
+    }
+    
+    currentNode.count++;
 }
 
-function childless(node) {
+function addChild(charOfChild, parent) {
 
+    var newChild = new node(charOfChild);
 
+    parent.children.push(newChild);
 
+    parent.children.sort();
+
+    return newChild;
 }
 
-function trieIterator() {
+/* ////////////////////////////////////////////////////////////////////////////////////
+ * THIS SECTION CONTAINS FUNCTIONS THAT SANITIZE AND FORMAT THE INPUT INTO AN ARRAY
+ * ///////////////////////////////////////////////////////////////////////////////////
+ *
+ * Raw input is lowerCased to standardize it
+ * 
+ * Prep Driver iterates through the raw input and calls helper functions to check each character and returns any array of lowercase words
+ * 
+ * Char is Letter returns true if the character is a letter
+ * 
+ * Char is space returns true if the character is white space.
+ */
+function prepDriver(raw) {
 
+    lowRaw = raw.toLowerCase();
+    var prepStr = "";
 
+    var lastCharAdded;
 
+    for (i = 0; i < lowRaw.length; i++) {
+
+        if (charIsLetter(lowRaw.charCodeAt(i))) {
+
+            prepStr += lowRaw.charAt(i);
+            lastCharAdded = lowRaw.charAt(i);
+        }
+        else if (charIsSpace(lowRaw.charCodeAt(i)) && lastCharAdded != '|') {
+
+            prepStr += '|';
+            lastCharAdded = '|';
+        }
+    }
+
+    return prepStr.split("|");
 }
 
-function inputFormatter() {
+function charIsLetter(charCode) {
 
+    if (charCode >= 97 && charCode <= 122) {
 
+        return true;
+    }
+    else {
+
+        return false;
+    }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////// CLEARING FUNCTIONS //////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+function charIsSpace(charCode) {
+
+    if (charCode == 32) {
+
+        return true;
+    }
+    else {
+
+        return false;
+    }
+}
+
+//*****************************************************************************************************
+//*****************************************************************************************************
+//                                CLEARING FUNCTIONS
+//*****************************************************************************************************
+//*****************************************************************************************************
 
 function clearlyUno(message, form) {
 
@@ -573,7 +815,6 @@ function clearlyUno(message, form) {
     $('#bmNum2').val("");
     $('#bmNum3').val("");
     $('#bmNum4').val("");
-
 }
 
 function clearlyDos() {
@@ -593,4 +834,9 @@ function clearlyQuat() {
 
     $('#palMessage').empty();
     $('#palForm').val("");
+}
+
+function clearlyCinc() {
+
+    $('#trieTextBox').val("");
 }
