@@ -537,11 +537,13 @@ function rootNode() {
 
 }
 
-function node(value) {
+function node(value, parent) {
 
     this.count = 0;
 
     this.value = value;
+
+    this.asciiVal = this.value.charCodeAt(0);
 
     this.parent = parent;
 
@@ -568,7 +570,7 @@ function trieDriver() {
 
     createTrie(wordArray, root);
 
-    alert(root.children[0].value);
+    alert(getWord(root.children[0].children[0]));
 }
 
 
@@ -634,13 +636,6 @@ function getChildIndex(childVal, parent) {
     }
 }
 
-function whichChildAmI(node) {
-
-    var index
-
-
-}
-
 /* ////////////////////////////////////////////////////////////////////////////////////
  * THIS SECTION CONTAINS FUNCTIONS FOR MOVING THROUGH THE TRIE
  * ///////////////////////////////////////////////////////////////////////////////////
@@ -655,15 +650,25 @@ function nthWord(place, root) {
 
     currentNode = root;
 
+    targetChildIndex = 0;
 
+    while (place > 0) {
+
+        if (hasChildren(currentNode)) {
+
+
+        }
+        else {
+
+
+        }
+    }
 }
 
 function hasWord(word, root) {
 
-    //begin from the root 
     currentNode = root;
 
-    //loop from the root through the word, if it exists then the loop wil finish
     for (o = 0; o < word.length; o++) {
 
         if (hasChild(word.charAt(o), currentNode)) {
@@ -675,7 +680,6 @@ function hasWord(word, root) {
         }
     }
 
-    //this final check ensures that the word actually occurred in the text and is not just a prefix for another wortd (Ban and Banned are words but Banne and Bann are not)
     if (currentNode.count > 0) {
 
         return true;
@@ -684,6 +688,22 @@ function hasWord(word, root) {
 
         return false;
     }
+}
+
+function getWord(endLetter)
+{
+    var word = endLetter.value;
+
+    var currentNode = endLetter.parent;
+
+    while (currentNode.value != "root") {
+
+        word = currentNode.value + word;
+
+        currentNode = currentNode.parent;
+    }
+
+    return word;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////
@@ -732,15 +752,62 @@ function addWord(word, root) {
 
 function addChild(charOfChild, parent) {
 
-    var newChild = new node(charOfChild);
+    var newChild = new node(charOfChild, parent);
 
     parent.children.push(newChild);
 
-    parent.children.sort();
+    if (parent.children.length > 1) {
+
+        insertionSortChild(newChild, parent);
+    }
 
     return newChild;
 }
 
+function insertionSortChild(child, parent) {
+
+    if (parent.children.length == 2) {
+
+        if (parent.children[1].asciiVal < parent.children[0].asciiVal) {
+
+            swapNodes(parent.children[1], parent.children[0]);
+        }
+    }
+    else {
+
+        breaker = true;
+
+        newChildIndex = getChildIndex(child.value, parent);
+
+        currentChildIndex = parent.children.length - 2;
+
+        while (breaker) {
+
+            if (currentChildIndex >= 0 && parent.children[newChildIndex].asciiVal < parent.children[currentChildIndex].asciiVal) {
+
+                swapNodes(parent.children[newChildIndex], parent.children[currentChildIndex]);
+
+                newChildIndex = currentChildIndex;
+                currentChildIndex--;
+            }
+            else {
+
+                breaker = false;
+            }
+        }
+    }
+}
+
+function swapNodes(newChild, oldChild) {
+
+    newChildIndex = getChildIndex(newChild.value, newChild.parent);
+
+    oldChildIndex = getChildIndex(oldChild.value, oldChild.parent);
+
+    newChild.parent.children[oldChildIndex] = newChild;
+
+    oldChild.parent.children[newChildIndex] = oldChild;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////
  * THIS SECTION CONTAINS FUNCTIONS THAT SANITIZE AND FORMAT THE INPUT INTO AN ARRAY
  * ///////////////////////////////////////////////////////////////////////////////////
@@ -773,7 +840,6 @@ function prepDriver(raw) {
             lastCharAdded = '|';
         }
     }
-
     return prepStr.split("|");
 }
 
