@@ -152,34 +152,8 @@ function factorial() {
                 factorial *= i;
             }
             //If value is larger than 18 message will print off of modal
-            if (value > 18)
-            {
-                factStr = "" + factorial;
-                var eStr = "" + factStr.charAt(0) + ".";
-
-                if (factStr.charAt(1) == ".") {
-
-                    for (i = 2; i < 12; i++) {
-
-                        eStr += factStr.charAt(i);
-                    }
-                }
-                else {
-
-                    for (i = 1; i < 11; i++) {
-
-                            eStr += factStr.charAt(i);
-                    }
-                }
-
-                eStr += "e+" + (factStr.length + 1) ;
-
-                $('#factMessage').append(whiteSpan + " The factorial of  " + spanEnd + redSpan + value + spanEnd + whiteSpan + "  is :  " + spanEnd + redSpan + eStr + spanEnd);
-            }
-            else
-            {
-                $('#factMessage').append(whiteSpan + " The factorial of  " + spanEnd + redSpan + value + spanEnd + whiteSpan + "  is :  " + spanEnd + redSpan + factorial + spanEnd);
-            }
+            
+            $('#factMessage').append(whiteSpan + " The factorial of  " + spanEnd + redSpan + value + spanEnd + whiteSpan + "  is :  " + spanEnd + redSpan + factorial + spanEnd);
         }
     }
     else
@@ -259,7 +233,10 @@ function fizzBuzzSolver(fizzer, buzzer) {
     var normSpan = "<span style='color: #fff; font-family:Times New Roman; font-size: 20px;'>";
     var fizzSpan = "<span style = 'color: #0094ff; font-family:Times New Roman; font-size: 25px;'>FIZZ</span>";
     var buzzSpan = "<span style = 'color: #ffd800; font-family:Times New Roman; font-size: 25px;'>BUZZ</span>";
-    var comma = normSpan + ", " + spanEnd;
+    var fizzBuzzSpan = "<span style = 'color: #4aed23; font-family:Times New Roman; font-size: 25px;'>FIZZBUZZ</span>";
+    var comma = normSpan + " - " + spanEnd;
+
+    
 
     //This For Loop will push to each array element a string with formatting span tags
     for (i = 1; i <= 100; i++) {
@@ -267,7 +244,7 @@ function fizzBuzzSolver(fizzer, buzzer) {
         // number i is a multiple of both fizz and buzz
         if (modulo(fizzer, i) && modulo(buzzer, i)) {
 
-            fizzBuzzArray.push(fizzSpan + buzzSpan);
+            fizzBuzzArray.push(fizzBuzzSpan);
         }
         // i is a multiple of only fizz
         else if (modulo(fizzer, i)) {
@@ -285,10 +262,7 @@ function fizzBuzzSolver(fizzer, buzzer) {
         }
 
         //This will ensure correct formatting, Line Break on the tenth element or a comma.
-        if (modulo(10, i)) {
-            fizzBuzzArray.push(brk);
-        }
-        else{
+        if (i < 100) {
             fizzBuzzArray.push(comma);
         }
     }
@@ -661,15 +635,6 @@ function nthWord(nthPlace, root) {
 
     while (breaker) {
 
-        //If nthPlace = 0 break and return the currentNode
-        //Else nthPlace does not equal zero then keep looping till it does
-            //If currentNode does not have children tell Parent which child you are and move back to parent
-            //Else if currentNode does have children but it has visited each one
-                //If the currentNode is root return -1
-                //Else tell parent which child you are and more back to parent
-            //Else move to leftmost unvisited child
-                //If currentNode has count > 0, then decrement nthPlace
-
         if (nthPlace == 0) {
 
             breaker = false;
@@ -949,4 +914,6 @@ function clearlyQuat() {
 function clearlyCinc() {
 
     $('#trieTextBox').val("");
+
+
 }

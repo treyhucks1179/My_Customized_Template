@@ -3854,8 +3854,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         }
 
             .nav > li > a:hover, .nav > li > a:focus {
-                text-decoration: none;
-                background-color: #eee
+                border-color: #666;
+                color: #ea1515;
+                background-color: transparent !important
             }
 
         .nav > li.disabled > a {
@@ -3863,7 +3864,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         }
 
             .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
-                color: #777;
+                color: #666;
                 text-decoration: none;
                 cursor: not-allowed;
                 background-color: transparent
@@ -3886,7 +3887,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
 .nav-tabs {
-    border-bottom: 1px solid #ddd
+
+    font-family:'Times New Roman';
+    font-size: 15px;
 }
 
     .nav-tabs > li {
@@ -3895,27 +3898,39 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
         .nav-tabs > li > a {
-            margin-right: 2px;
-            line-height: 1.42857143;
-            border: 1px solid transparent;
-            border-radius: 4px 4px 0 0
+            border-color: #333;
+            border-radius: 0;
+            text-transform: uppercase;
+            font-weight: 200;
+            color: #fff;
+            background-color: transparent;
+            letter-spacing: 1px;
+            -webkit-transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+            -o-transition: all .5s ease-in-out;
+            -ms-transition: all .5s ease-in-out;
+            transition: all .5s ease-in-out;
+            border: none;
+            border-bottom: 3px solid;
+            font-size: 15px;
+            padding-left:5px;
+            padding-right:5px;
+            margin-left:5px;
+            margin-right:5px;
         }
 
             .nav-tabs > li > a:hover {
-                border-color: #eee #eee #ddd
+                border-color: #666 #666 #666
             }
 
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-            color: #555;
-            cursor: default;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-bottom-color: transparent
+            border-color: #666;
+            color: #ea1515;
+            background-color: transparent !important
         }
 
     .nav-tabs.nav-justified {
         width: 100%;
-        border-bottom: 0
     }
 
         .nav-tabs.nav-justified > li {
@@ -3923,7 +3938,6 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         }
 
             .nav-tabs.nav-justified > li > a {
-                margin-bottom: 5px;
                 text-align: center
             }
 
