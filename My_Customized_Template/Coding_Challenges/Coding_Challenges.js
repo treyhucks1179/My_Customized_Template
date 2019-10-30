@@ -570,7 +570,7 @@ function trieDriver() {
 
     createTrie(wordArray, root);
 
-    alert(getWord(root.children[0].children[0]));
+    alert(nthWord(10, root));
 }
 
 
@@ -625,15 +625,20 @@ function getChild(childVal, parent) {
     }
 }
 
-function getChildIndex(childVal, parent) {
+function getChildIndex(child, parent) {
 
     for (p = 0; p < parent.children.length; p++) {
 
-        if (childVal == parent.children[p].value) {
+        if (child== parent.children[p]) {
 
             return p;
         }
     }
+}
+
+function whichChildAmI(node) {
+
+    return getChildIndex(node, node.parent);
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////
@@ -646,23 +651,62 @@ function getChildIndex(childVal, parent) {
  * hasWord returns true or false if the word exists in the trie, not a prefix but a word with a >=1 count
  *
  */
-function nthWord(place, root) {
+function nthWord(nthPlace, root) {
+
+    breaker = true;
 
     currentNode = root;
 
-    targetChildIndex = 0;
+    nextChildIndex = 0; 
 
-    while (place > 0) {
+    while (breaker) {
 
-        if (hasChildren(currentNode)) {
+        //If nthPlace = 0 break and return the currentNode
+        //Else nthPlace does not equal zero then keep looping till it does
+            //If currentNode does not have children tell Parent which child you are and move back to parent
+            //Else if currentNode does have children but it has visited each one
+                //If the currentNode is root return -1
+                //Else tell parent which child you are and more back to parent
+            //Else move to leftmost unvisited child
+                //If currentNode has count > 0, then decrement nthPlace
 
+        if (nthPlace == 0) {
 
+            breaker = false;
         }
         else {
 
+            if (!hasChildren(currentNode)) {
 
+                nextChildIndex = whichChildAmI(currentNode) + 1;
+                currentNode = currentNode.parent;
+            }
+            else if (hasChildren(currentNode) && nextChildIndex >= currentNode.children.length) {
+
+                if (currentNode.value == "root") {
+
+                    return -1;
+                }
+                else {
+
+                    nextChildIndex = whichChildAmI(currentNode) + 1;
+                    currentNode = currentNode.parent;
+                }
+            }
+            else {
+
+                currentNode = currentNode.children[nextChildIndex];
+                nextChildIndex = 0;
+
+                if (currentNode.count > 0) {
+
+                    nthPlace--;
+                }
+            }
         }
     }
+
+    return getWord(currentNode);
 }
 
 function hasWord(word, root) {
@@ -777,7 +821,7 @@ function insertionSortChild(child, parent) {
 
         breaker = true;
 
-        newChildIndex = getChildIndex(child.value, parent);
+        newChildIndex = getChildIndex(child, parent);
 
         currentChildIndex = parent.children.length - 2;
 
@@ -800,9 +844,9 @@ function insertionSortChild(child, parent) {
 
 function swapNodes(newChild, oldChild) {
 
-    newChildIndex = getChildIndex(newChild.value, newChild.parent);
+    newChildIndex = getChildIndex(newChild, newChild.parent);
 
-    oldChildIndex = getChildIndex(oldChild.value, oldChild.parent);
+    oldChildIndex = getChildIndex(oldChild, oldChild.parent);
 
     newChild.parent.children[oldChildIndex] = newChild;
 

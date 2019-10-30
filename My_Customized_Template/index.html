@@ -657,11 +657,31 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span style='color:#ea1515;'>&#215;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" onclick="clearlyCinc()"><span style='color:#ea1515;'>&#215;</span></button>
                     <h4 class="modal-title">Trie Data Structure</h4>
                 </div>
                 <div class="modal-body">
-                <textarea rows="10"cols="50" style="overflow-y:scroll; background-color: #fff; color: #000; font-family:'Times New Roman', Times; font-size: 18px;" placeholder="Copy or Type a large amount of text to try the Trie!" id="trieTextBox"></textarea>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="row">
+                                    <textarea rows="10" cols="35" style="overflow-y:scroll; background-color: #fff; color: #000; font-family:'Times New Roman', Times; font-size: 18px;" placeholder="Copy or Type a large amount of text to try the Trie!" id="trieTextBox"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter" id="trieForm1">
+                                        <br />
+                                        <input type="text" class="form-control" placeholder="Enter" id="trieForm2">
+                                        <br />
+                                        <input type="text" class="form-control" placeholder="Enter" id="trieForm3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <p id="trieMessage"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="row">
